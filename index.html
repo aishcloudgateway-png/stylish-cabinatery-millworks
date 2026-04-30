@@ -1,0 +1,1868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stylish Cabinetry Millworks | Luxury Custom Cabinetry — Vancouver & Okanagan</title>
+<meta name="description" content="Vancouver's premier luxury cabinetry and millwork studio. Custom kitchens, bathroom vanities, and bespoke interiors crafted to perfection.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@200;300;400;500;600&family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ─── VARIABLES ─── */
+:root {
+  --obsidian: #09090a;
+  --charcoal: #111113;
+  --dark: #1a1a1c;
+  --ash: #272729;
+  --mid: #505052;
+  --silver: #8a8a8c;
+  --pearl: #c4c4c6;
+  --ivory: #f4f1ec;
+  --cream: #faf8f4;
+  --white: #ffffff;
+  --gold: #c8a55a;
+  --gold-light: #dfc07e;
+  --gold-pale: rgba(200, 165, 90, 0.08);
+  --gold-border: rgba(200, 165, 90, 0.25);
+  --transition: 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --fast: 0.3s ease;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Jost', sans-serif;
+  --font-accent: 'Cinzel', serif;
+}
+
+/* ─── RESET & BASE ─── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: var(--font-body);
+  background: var(--obsidian);
+  color: var(--ivory);
+  overflow-x: hidden;
+  cursor: none;
+}
+img { display: block; width: 100%; object-fit: cover; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+button { cursor: none; border: none; background: none; font-family: inherit; }
+input, textarea, select { font-family: inherit; }
+
+/* ─── CUSTOM CURSOR ─── */
+.cursor-dot {
+  width: 6px; height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+  position: fixed; top: 0; left: 0;
+  pointer-events: none; z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease, width 0.3s ease, height 0.3s ease;
+}
+.cursor-ring {
+  width: 36px; height: 36px;
+  border: 1px solid rgba(200, 165, 90, 0.5);
+  border-radius: 50%;
+  position: fixed; top: 0; left: 0;
+  pointer-events: none; z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.15s ease, width 0.3s ease, height 0.3s ease, border-color 0.3s ease;
+}
+body:has(a:hover) .cursor-ring,
+body:has(button:hover) .cursor-ring { width: 54px; height: 54px; border-color: var(--gold); }
+
+/* ─── LOADER ─── */
+#loader {
+  position: fixed; inset: 0;
+  background: var(--obsidian);
+  z-index: 10000;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 24px;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+#loader.hidden { opacity: 0; visibility: hidden; }
+.loader-logo {
+  font-family: var(--font-accent);
+  font-size: 1.1rem;
+  letter-spacing: 0.4em;
+  color: var(--gold);
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.3s forwards;
+}
+.loader-bar-wrap {
+  width: 200px; height: 1px;
+  background: var(--ash);
+  overflow: hidden;
+}
+.loader-bar {
+  height: 100%;
+  background: var(--gold);
+  width: 0;
+  animation: loadBar 1.8s ease forwards;
+}
+@keyframes loadBar { to { width: 100%; } }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+
+/* ─── NAVIGATION ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  padding: 28px 60px;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: padding var(--fast), background var(--fast), border-color var(--fast);
+  border-bottom: 1px solid transparent;
+}
+nav.scrolled {
+  padding: 18px 60px;
+  background: rgba(9, 9, 10, 0.95);
+  backdrop-filter: blur(20px);
+  border-color: rgba(200, 165, 90, 0.15);
+}
+.nav-logo {
+  display: flex; flex-direction: column; gap: 2px;
+}
+.nav-logo-main {
+  font-family: var(--font-accent);
+  font-size: 1.05rem; letter-spacing: 0.25em;
+  color: var(--white);
+}
+.nav-logo-sub {
+  font-family: var(--font-body);
+  font-size: 0.58rem; letter-spacing: 0.35em;
+  color: var(--gold); font-weight: 300;
+  text-transform: uppercase;
+}
+.nav-links {
+  display: flex; align-items: center; gap: 44px;
+}
+.nav-links a {
+  font-family: var(--font-body);
+  font-size: 0.72rem; font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--pearl);
+  position: relative;
+  transition: color var(--fast);
+}
+.nav-links a::after {
+  content: '';
+  position: absolute; bottom: -4px; left: 0; right: 100%;
+  height: 1px; background: var(--gold);
+  transition: right var(--fast);
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-links a:hover::after { right: 0; }
+.nav-cta {
+  padding: 11px 28px;
+  border: 1px solid var(--gold);
+  font-size: 0.68rem !important;
+  letter-spacing: 0.25em !important;
+  color: var(--gold) !important;
+  font-weight: 500 !important;
+  transition: background var(--fast), color var(--fast) !important;
+}
+.nav-cta:hover { background: var(--gold) !important; color: var(--obsidian) !important; }
+.nav-cta::after { display: none !important; }
+.hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  padding: 8px; cursor: none;
+}
+.hamburger span {
+  display: block; width: 26px; height: 1px;
+  background: var(--ivory); transition: var(--fast);
+}
+.hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+/* Mobile menu */
+.mobile-menu {
+  position: fixed; inset: 0; z-index: 999;
+  background: var(--obsidian);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 40px;
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+.mobile-menu.open { opacity: 1; visibility: visible; pointer-events: all; }
+.mobile-menu a {
+  font-family: var(--font-display);
+  font-size: 2.2rem; font-weight: 300;
+  color: var(--ivory);
+  letter-spacing: 0.05em;
+  transition: color var(--fast);
+}
+.mobile-menu a:hover { color: var(--gold); }
+.mobile-menu .m-contact {
+  font-family: var(--font-body);
+  font-size: 0.75rem; letter-spacing: 0.2em;
+  color: var(--silver);
+  margin-top: 20px;
+}
+
+/* ─── SCROLL REVEAL ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+.reveal.visible { opacity: 1; transform: none; }
+.reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.9s ease, transform 0.9s ease; }
+.reveal-left.visible { opacity: 1; transform: none; }
+.reveal-right { opacity: 0; transform: translateX(40px); transition: opacity 0.9s ease, transform 0.9s ease; }
+.reveal-right.visible { opacity: 1; transform: none; }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ─── SECTION COMMON ─── */
+.section-label {
+  font-family: var(--font-accent);
+  font-size: 0.6rem; letter-spacing: 0.45em;
+  text-transform: uppercase; color: var(--gold);
+  display: flex; align-items: center; gap: 16px;
+}
+.section-label::before {
+  content: ''; display: block; width: 40px; height: 1px;
+  background: var(--gold);
+}
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 300; line-height: 1.1;
+}
+.section-title em { font-style: italic; color: var(--gold); }
+
+/* ─── HERO ─── */
+#hero {
+  position: relative; height: 100vh; min-height: 700px;
+  display: flex; align-items: center; overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1920&q=85');
+  background-size: cover; background-position: center 40%;
+  transform: scale(1.08);
+  animation: heroZoom 12s ease-out forwards;
+}
+@keyframes heroZoom { to { transform: scale(1); } }
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    105deg,
+    rgba(9,9,10,0.88) 0%,
+    rgba(9,9,10,0.55) 55%,
+    rgba(9,9,10,0.3) 100%
+  );
+}
+.hero-content {
+  position: relative; z-index: 2;
+  padding: 0 60px; max-width: 900px;
+}
+.hero-eyebrow {
+  font-family: var(--font-accent);
+  font-size: 0.62rem; letter-spacing: 0.55em;
+  color: var(--gold); margin-bottom: 28px;
+  display: flex; align-items: center; gap: 16px;
+  opacity: 0; animation: fadeUp 0.9s ease 1.5s forwards;
+}
+.hero-eyebrow::before { content: ''; display: block; width: 40px; height: 1px; background: var(--gold); }
+.hero-title {
+  font-family: var(--font-display);
+  font-weight: 300; line-height: 1.0;
+  overflow: hidden;
+}
+.hero-title .line {
+  display: block; overflow: hidden;
+}
+.hero-title .line span {
+  display: block;
+  opacity: 0; transform: translateY(100%);
+}
+.hero-title .line:nth-child(1) span { animation: slideUp 0.9s ease 1.7s forwards; }
+.hero-title .line:nth-child(2) span { animation: slideUp 0.9s ease 1.9s forwards; }
+.hero-title .line:nth-child(3) span { animation: slideUp 0.9s ease 2.1s forwards; }
+.hero-t1 { font-size: clamp(3.2rem, 6vw, 6rem); color: var(--white); }
+.hero-t2 { font-size: clamp(3.8rem, 7.5vw, 8rem); font-style: italic; color: var(--gold); }
+.hero-t3 { font-size: clamp(3.2rem, 6vw, 6rem); color: var(--white); }
+@keyframes slideUp { to { opacity: 1; transform: none; } }
+.hero-desc {
+  font-size: 0.9rem; font-weight: 300; line-height: 1.9;
+  color: var(--pearl); max-width: 480px;
+  margin: 32px 0 48px;
+  opacity: 0; animation: fadeUp 0.9s ease 2.4s forwards;
+}
+.hero-btns {
+  display: flex; gap: 20px; align-items: center;
+  opacity: 0; animation: fadeUp 0.9s ease 2.6s forwards;
+}
+.btn-primary {
+  padding: 16px 44px;
+  background: var(--gold);
+  color: var(--obsidian);
+  font-family: var(--font-body);
+  font-size: 0.68rem; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  transition: background var(--fast), transform var(--fast);
+}
+.btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+.btn-outline {
+  padding: 16px 44px;
+  border: 1px solid rgba(255,255,255,0.3);
+  color: var(--ivory);
+  font-family: var(--font-body);
+  font-size: 0.68rem; font-weight: 400;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  transition: border-color var(--fast), color var(--fast);
+}
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+.hero-scroll {
+  position: absolute; bottom: 44px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+  opacity: 0; animation: fadeUp 0.9s ease 3s forwards;
+}
+.hero-scroll span {
+  font-family: var(--font-accent);
+  font-size: 0.52rem; letter-spacing: 0.4em;
+  color: var(--silver);
+}
+.scroll-line {
+  width: 1px; height: 50px; background: linear-gradient(to bottom, var(--gold), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+/* ─── STATS BAR ─── */
+#stats {
+  background: var(--dark);
+  border-top: 1px solid rgba(200,165,90,0.2);
+  border-bottom: 1px solid rgba(200,165,90,0.2);
+  padding: 0;
+}
+.stats-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+}
+.stat-item {
+  padding: 52px 40px;
+  text-align: center;
+  border-right: 1px solid rgba(200,165,90,0.12);
+  position: relative; overflow: hidden;
+  transition: background var(--fast);
+}
+.stat-item:last-child { border-right: none; }
+.stat-item::before {
+  content: ''; position: absolute; inset: 0;
+  background: var(--gold-pale); opacity: 0;
+  transition: opacity var(--fast);
+}
+.stat-item:hover::before { opacity: 1; }
+.stat-number {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 4vw, 4rem);
+  font-weight: 300; color: var(--gold);
+  line-height: 1; margin-bottom: 10px;
+}
+.stat-number sup { font-size: 0.45em; vertical-align: super; }
+.stat-label {
+  font-family: var(--font-body);
+  font-size: 0.68rem; font-weight: 300;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--silver);
+}
+
+/* ─── ABOUT ─── */
+#about {
+  background: var(--cream); color: var(--obsidian);
+  padding: 140px 60px;
+}
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 100px; align-items: center;
+  max-width: 1300px; margin: 0 auto;
+}
+.about-img-wrap {
+  position: relative; height: 620px;
+}
+.about-img-main {
+  position: absolute; inset: 0;
+  overflow: hidden;
+}
+.about-img-main img {
+  height: 100%; transition: transform 0.8s ease;
+}
+.about-img-main:hover img { transform: scale(1.04); }
+.about-img-accent {
+  position: absolute; bottom: -40px; right: -40px;
+  width: 55%; height: 55%;
+  overflow: hidden;
+  border: 6px solid var(--cream);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+}
+.about-img-accent img { height: 100%; }
+.about-badge {
+  position: absolute; top: 40px; left: -20px;
+  background: var(--obsidian); color: var(--gold);
+  padding: 20px 24px; text-align: center;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+.about-badge-num {
+  font-family: var(--font-display);
+  font-size: 2.4rem; font-weight: 300;
+  line-height: 1;
+}
+.about-badge-txt {
+  font-family: var(--font-body);
+  font-size: 0.6rem; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--silver);
+  margin-top: 4px;
+}
+.about-content { padding: 20px 0; }
+.about-content .section-label { margin-bottom: 22px; color: var(--gold); }
+.about-content .section-label::before { background: var(--gold); }
+.about-title { font-size: clamp(2.5rem, 3.5vw, 3.8rem); color: var(--obsidian); margin-bottom: 30px; }
+.about-text {
+  font-size: 0.92rem; font-weight: 300; line-height: 2;
+  color: var(--mid); margin-bottom: 20px;
+}
+.about-divider { width: 60px; height: 1px; background: var(--gold); margin: 32px 0; }
+.about-features {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 16px; margin-bottom: 44px;
+}
+.about-feat {
+  display: flex; align-items: flex-start; gap: 12px;
+  font-size: 0.8rem; font-weight: 400; color: var(--mid);
+}
+.about-feat-icon {
+  width: 20px; height: 20px; flex-shrink: 0;
+  border: 1px solid var(--gold); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin-top: 2px;
+}
+.about-feat-icon::before {
+  content: ''; width: 5px; height: 5px;
+  background: var(--gold); border-radius: 50%;
+}
+.btn-dark {
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 16px 40px;
+  background: var(--obsidian); color: var(--ivory);
+  font-size: 0.68rem; font-weight: 500;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  transition: background var(--fast), gap var(--fast);
+}
+.btn-dark::after { content: '→'; font-size: 1rem; }
+.btn-dark:hover { background: var(--ash); gap: 20px; }
+
+/* ─── SERVICES ─── */
+#services {
+  background: var(--obsidian);
+  padding: 140px 60px;
+}
+.services-header {
+  text-align: center; margin-bottom: 80px;
+  max-width: 700px; margin-left: auto; margin-right: auto;
+}
+.services-header .section-label {
+  justify-content: center; margin-bottom: 22px;
+}
+.services-header .section-label::before { display: none; }
+.services-header .section-label::after {
+  content: ''; display: block; width: 40px; height: 1px;
+  background: var(--gold);
+}
+.services-title { font-size: clamp(2.5rem, 4vw, 4rem); color: var(--white); margin-bottom: 20px; }
+.services-sub {
+  font-size: 0.9rem; font-weight: 300;
+  color: var(--silver); line-height: 1.9;
+}
+.services-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 2px; max-width: 1300px; margin: 0 auto;
+}
+.service-card {
+  position: relative; overflow: hidden;
+  height: 500px;
+  cursor: none;
+}
+.service-img {
+  position: absolute; inset: 0;
+  transition: transform 0.8s ease;
+}
+.service-img img { height: 100%; }
+.service-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(9,9,10,0.95) 0%,
+    rgba(9,9,10,0.5) 50%,
+    rgba(9,9,10,0.2) 100%
+  );
+  transition: background 0.5s ease;
+}
+.service-card:hover .service-img { transform: scale(1.06); }
+.service-card:hover .service-overlay {
+  background: linear-gradient(
+    to top,
+    rgba(9,9,10,0.97) 0%,
+    rgba(9,9,10,0.7) 60%,
+    rgba(9,9,10,0.3) 100%
+  );
+}
+.service-content {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 44px 44px 48px;
+}
+.service-num {
+  font-family: var(--font-accent);
+  font-size: 0.68rem; letter-spacing: 0.3em;
+  color: var(--gold); margin-bottom: 14px;
+}
+.service-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 2.2vw, 2.2rem);
+  font-weight: 400; color: var(--white);
+  margin-bottom: 16px;
+}
+.service-desc {
+  font-size: 0.83rem; font-weight: 300;
+  line-height: 1.85; color: var(--pearl);
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.5s ease, opacity 0.4s ease;
+  opacity: 0; margin-bottom: 0;
+}
+.service-card:hover .service-desc { max-height: 200px; opacity: 1; margin-bottom: 24px; }
+.service-link {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); font-weight: 500;
+  transition: gap var(--fast);
+}
+.service-link:hover { gap: 18px; }
+.service-link::after { content: '→'; }
+
+/* ─── PROJECTS ─── */
+#projects {
+  background: var(--charcoal);
+  padding: 140px 60px;
+}
+.projects-header {
+  display: flex; align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 60px;
+  max-width: 1300px; margin-left: auto; margin-right: auto;
+  margin-bottom: 60px;
+}
+.projects-title-wrap .section-label { margin-bottom: 16px; }
+.projects-title { font-size: clamp(2.5rem, 3.8vw, 4rem); color: var(--white); }
+.projects-title em { color: var(--gold); font-style: italic; }
+.projects-filters {
+  display: flex; gap: 6px; align-items: center;
+}
+.filter-btn {
+  padding: 10px 22px;
+  font-family: var(--font-body);
+  font-size: 0.65rem; font-weight: 400;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--silver);
+  border: 1px solid transparent;
+  transition: all var(--fast);
+  cursor: none;
+}
+.filter-btn:hover { color: var(--ivory); border-color: rgba(255,255,255,0.15); }
+.filter-btn.active { color: var(--gold); border-color: var(--gold-border); }
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  max-width: 1300px; margin: 0 auto;
+}
+.project-item {
+  position: relative; overflow: hidden;
+  cursor: none;
+}
+.project-item:nth-child(1) { grid-row: span 2; }
+.project-img { height: 320px; overflow: hidden; }
+.project-item:nth-child(1) .project-img { height: 100%; min-height: 644px; }
+.project-img img {
+  height: 100%; transition: transform 0.7s ease;
+}
+.project-overlay {
+  position: absolute; inset: 0;
+  background: rgba(9,9,10,0);
+  display: flex; flex-direction: column;
+  align-items: flex-start; justify-content: flex-end;
+  padding: 36px;
+  transition: background 0.5s ease;
+}
+.project-item:hover .project-overlay { background: rgba(9,9,10,0.7); }
+.project-item:hover .project-img img { transform: scale(1.06); }
+.project-info {
+  transform: translateY(20px); opacity: 0;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+.project-item:hover .project-info { transform: none; opacity: 1; }
+.project-cat {
+  font-family: var(--font-accent);
+  font-size: 0.55rem; letter-spacing: 0.35em;
+  color: var(--gold); text-transform: uppercase; margin-bottom: 8px;
+}
+.project-name {
+  font-family: var(--font-display);
+  font-size: 1.5rem; font-weight: 400;
+  color: var(--white);
+}
+.project-loc {
+  font-size: 0.7rem; font-weight: 300;
+  color: var(--pearl); margin-top: 4px;
+}
+.projects-cta {
+  text-align: center; margin-top: 60px;
+  max-width: 1300px; margin-left: auto; margin-right: auto;
+  margin-top: 60px;
+}
+
+/* ─── FOUNDER ─── */
+#founder {
+  background: var(--dark);
+  padding: 140px 60px;
+  position: relative; overflow: hidden;
+}
+#founder::before {
+  content: '"'; position: absolute;
+  top: 40px; right: 80px;
+  font-family: var(--font-display);
+  font-size: 22rem; line-height: 1;
+  color: rgba(200,165,90,0.04);
+  pointer-events: none;
+}
+.founder-grid {
+  display: grid; grid-template-columns: 420px 1fr;
+  gap: 100px; align-items: center;
+  max-width: 1200px; margin: 0 auto;
+}
+.founder-img-wrap { position: relative; }
+.founder-img-frame {
+  position: relative; height: 560px; overflow: hidden;
+}
+.founder-img-frame::before {
+  content: ''; position: absolute;
+  top: -16px; left: -16px; right: 16px; bottom: 16px;
+  border: 1px solid var(--gold-border); z-index: 0;
+}
+.founder-img-frame img {
+  height: 100%; position: relative; z-index: 1;
+}
+.founder-tag {
+  position: absolute; bottom: -20px; right: -20px;
+  background: var(--gold); padding: 20px 28px; z-index: 2;
+}
+.founder-tag-role {
+  font-family: var(--font-accent);
+  font-size: 0.58rem; letter-spacing: 0.3em;
+  color: var(--obsidian); text-transform: uppercase;
+}
+.founder-tag-name {
+  font-family: var(--font-display);
+  font-size: 1.3rem; font-weight: 500;
+  color: var(--obsidian); margin-top: 4px;
+}
+.founder-content .section-label { margin-bottom: 32px; }
+.founder-quote {
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 2.5vw, 2.6rem);
+  font-weight: 300; font-style: italic;
+  color: var(--ivory); line-height: 1.5;
+  margin-bottom: 36px;
+}
+.founder-bio {
+  font-size: 0.88rem; font-weight: 300;
+  line-height: 2; color: var(--silver);
+  margin-bottom: 20px;
+}
+.founder-divider { width: 50px; height: 1px; background: var(--gold); margin: 36px 0; }
+.founder-signature {
+  font-family: var(--font-display);
+  font-size: 1.8rem; font-style: italic;
+  color: var(--gold); font-weight: 400;
+}
+.founder-sig-title {
+  font-family: var(--font-body);
+  font-size: 0.65rem; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--silver);
+  margin-top: 6px;
+}
+
+/* ─── PRICING ─── */
+#pricing {
+  background: var(--cream); color: var(--obsidian);
+  padding: 140px 60px;
+}
+.pricing-header {
+  text-align: center; margin-bottom: 80px;
+}
+.pricing-header .section-label {
+  justify-content: center; margin-bottom: 22px; color: var(--gold);
+}
+.pricing-header .section-label::before { background: var(--gold); }
+.pricing-title {
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  color: var(--obsidian); margin-bottom: 18px;
+}
+.pricing-sub {
+  font-size: 0.9rem; font-weight: 300;
+  color: var(--mid); line-height: 1.8; max-width: 580px; margin: 0 auto;
+}
+.pricing-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 0; max-width: 1200px; margin: 0 auto;
+  border: 1px solid rgba(0,0,0,0.08);
+}
+.pricing-card {
+  padding: 56px 44px;
+  border-right: 1px solid rgba(0,0,0,0.08);
+  position: relative; overflow: hidden;
+  transition: background var(--transition);
+}
+.pricing-card:last-child { border-right: none; }
+.pricing-card.featured {
+  background: var(--obsidian); color: var(--ivory);
+}
+.pricing-card.featured .pricing-price { color: var(--gold); }
+.pricing-card.featured .pricing-feat { color: var(--pearl); }
+.pricing-card.featured .pricing-feat-icon { border-color: var(--gold); }
+.pricing-card.featured .pricing-feat-icon::before { background: var(--gold); }
+.pricing-tier {
+  font-family: var(--font-accent);
+  font-size: 0.62rem; letter-spacing: 0.4em;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 22px;
+}
+.pricing-price {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 4vw, 4rem);
+  font-weight: 300; line-height: 1;
+  color: var(--obsidian); margin-bottom: 6px;
+}
+.pricing-price-from {
+  font-family: var(--font-body);
+  font-size: 0.65rem; color: var(--silver);
+  letter-spacing: 0.1em; margin-bottom: 28px;
+}
+.pricing-line {
+  height: 1px;
+  background: rgba(0,0,0,0.1); margin-bottom: 28px;
+}
+.pricing-card.featured .pricing-line { background: rgba(255,255,255,0.1); }
+.pricing-desc {
+  font-size: 0.84rem; font-weight: 300;
+  line-height: 1.85; color: var(--mid);
+  margin-bottom: 32px;
+}
+.pricing-card.featured .pricing-desc { color: var(--silver); }
+.pricing-feats { margin-bottom: 44px; display: flex; flex-direction: column; gap: 14px; }
+.pricing-feat {
+  display: flex; align-items: flex-start; gap: 12px;
+  font-size: 0.8rem; font-weight: 300; color: var(--mid);
+}
+.pricing-feat-icon {
+  width: 18px; height: 18px; flex-shrink: 0; margin-top: 1px;
+  border: 1px solid rgba(0,0,0,0.2); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+}
+.pricing-feat-icon::before {
+  content: ''; width: 5px; height: 5px;
+  background: var(--mid); border-radius: 50%;
+}
+.btn-pricing-dark {
+  width: 100%; padding: 16px;
+  background: var(--obsidian); color: var(--ivory);
+  font-size: 0.65rem; font-weight: 500;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  transition: background var(--fast);
+  cursor: none; display: block; text-align: center;
+}
+.btn-pricing-dark:hover { background: var(--ash); }
+.btn-pricing-gold {
+  width: 100%; padding: 16px;
+  background: var(--gold); color: var(--obsidian);
+  font-size: 0.65rem; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  transition: background var(--fast);
+  cursor: none; display: block; text-align: center;
+}
+.btn-pricing-gold:hover { background: var(--gold-light); }
+.pricing-badge {
+  position: absolute; top: 28px; right: 28px;
+  background: var(--gold);
+  font-family: var(--font-accent);
+  font-size: 0.5rem; letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--obsidian); padding: 6px 14px;
+}
+.pricing-note {
+  text-align: center; margin-top: 50px;
+  font-size: 0.78rem; font-weight: 300;
+  color: var(--silver);
+}
+
+/* ─── CAREERS ─── */
+#careers {
+  background: var(--obsidian);
+  padding: 140px 60px;
+}
+.careers-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: start;
+  max-width: 1300px; margin: 0 auto;
+}
+.careers-intro .section-label { margin-bottom: 24px; }
+.careers-title { font-size: clamp(2.4rem, 3.5vw, 3.8rem); color: var(--white); margin-bottom: 28px; }
+.careers-text {
+  font-size: 0.88rem; font-weight: 300;
+  line-height: 2; color: var(--silver); margin-bottom: 44px;
+}
+.careers-values {
+  display: flex; flex-direction: column; gap: 20px;
+}
+.careers-value {
+  display: flex; gap: 20px; align-items: flex-start;
+}
+.cv-num {
+  font-family: var(--font-accent);
+  font-size: 0.6rem; letter-spacing: 0.2em;
+  color: var(--gold); min-width: 32px; padding-top: 3px;
+}
+.cv-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem; color: var(--ivory);
+  margin-bottom: 6px;
+}
+.cv-desc {
+  font-size: 0.78rem; font-weight: 300;
+  color: var(--silver); line-height: 1.7;
+}
+.careers-jobs { display: flex; flex-direction: column; gap: 2px; }
+.job-card {
+  background: var(--dark);
+  border: 1px solid rgba(255,255,255,0.05);
+  padding: 32px 36px;
+  transition: border-color var(--fast), background var(--fast);
+  cursor: none;
+}
+.job-card:hover {
+  border-color: var(--gold-border);
+  background: var(--ash);
+}
+.job-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
+.job-title {
+  font-family: var(--font-display);
+  font-size: 1.3rem; font-weight: 400; color: var(--ivory);
+}
+.job-type {
+  font-family: var(--font-accent);
+  font-size: 0.5rem; letter-spacing: 0.25em;
+  color: var(--gold); padding: 5px 14px;
+  border: 1px solid var(--gold-border);
+}
+.job-meta {
+  display: flex; gap: 24px;
+  font-size: 0.72rem; font-weight: 300;
+  color: var(--silver); margin-bottom: 16px;
+}
+.job-meta span { display: flex; align-items: center; gap: 6px; }
+.job-meta span::before { content: '○'; color: var(--gold); font-size: 0.5rem; }
+.job-desc {
+  font-size: 0.8rem; font-weight: 300;
+  line-height: 1.8; color: var(--silver);
+  margin-bottom: 22px;
+}
+.job-apply {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); font-weight: 500;
+  transition: gap var(--fast);
+}
+.job-apply:hover { gap: 18px; }
+.job-apply::after { content: '→'; }
+
+/* ─── CONTACT ─── */
+#contact {
+  display: grid; grid-template-columns: 1fr 1.3fr;
+  min-height: 700px;
+}
+.contact-info {
+  background: var(--dark);
+  padding: 100px 70px;
+  display: flex; flex-direction: column; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.contact-info::after {
+  content: ''; position: absolute;
+  bottom: 0; right: 0;
+  width: 250px; height: 250px;
+  background: radial-gradient(circle, rgba(200,165,90,0.08) 0%, transparent 70%);
+}
+.contact-info .section-label { margin-bottom: 28px; }
+.contact-title {
+  font-size: clamp(2.5rem, 3.5vw, 3.8rem); color: var(--white);
+  margin-bottom: 20px;
+}
+.contact-subtitle {
+  font-size: 0.88rem; font-weight: 300;
+  line-height: 1.9; color: var(--silver); margin-bottom: 56px;
+}
+.contact-details { display: flex; flex-direction: column; gap: 32px; }
+.contact-detail { display: flex; gap: 22px; align-items: flex-start; }
+.cd-icon {
+  width: 44px; height: 44px; flex-shrink: 0;
+  border: 1px solid var(--gold-border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; color: var(--gold);
+  margin-top: 4px;
+}
+.cd-label {
+  font-family: var(--font-accent);
+  font-size: 0.55rem; letter-spacing: 0.3em;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 6px;
+}
+.cd-value {
+  font-family: var(--font-display);
+  font-size: 1.3rem; font-weight: 400; color: var(--ivory);
+}
+.cd-value a { color: inherit; transition: color var(--fast); }
+.cd-value a:hover { color: var(--gold); }
+.contact-form-wrap {
+  background: var(--cream); padding: 100px 70px;
+}
+.contact-form-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem; font-weight: 400;
+  color: var(--obsidian); letter-spacing: 0.05em;
+  margin-bottom: 40px;
+}
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.form-full { grid-column: 1 / -1; }
+.form-group { display: flex; flex-direction: column; gap: 8px; }
+.form-label {
+  font-family: var(--font-accent);
+  font-size: 0.55rem; letter-spacing: 0.3em;
+  text-transform: uppercase; color: var(--mid);
+}
+.form-control {
+  padding: 14px 0;
+  border: none; border-bottom: 1px solid rgba(0,0,0,0.15);
+  background: transparent;
+  font-size: 0.88rem; font-weight: 300;
+  color: var(--obsidian);
+  outline: none;
+  transition: border-color var(--fast);
+}
+.form-control:focus { border-color: var(--gold); }
+.form-control::placeholder { color: var(--pearl); }
+select.form-control { cursor: none; appearance: none; }
+textarea.form-control { resize: none; height: 100px; }
+.form-submit {
+  margin-top: 36px;
+}
+.btn-submit {
+  padding: 18px 52px;
+  background: var(--obsidian); color: var(--ivory);
+  font-size: 0.68rem; font-weight: 500;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  border: none; cursor: none;
+  transition: background var(--fast), transform var(--fast);
+  position: relative; overflow: hidden;
+}
+.btn-submit::before {
+  content: ''; position: absolute; inset: 0;
+  background: var(--gold); transform: scaleX(0);
+  transform-origin: left; transition: transform 0.4s ease;
+}
+.btn-submit:hover::before { transform: scaleX(1); }
+.btn-submit span { position: relative; z-index: 1; }
+.btn-submit:hover { color: var(--obsidian); }
+.form-success {
+  display: none; margin-top: 20px; padding: 16px 22px;
+  background: rgba(200,165,90,0.1);
+  border-left: 3px solid var(--gold);
+  font-size: 0.82rem; font-weight: 300;
+  color: var(--mid);
+}
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--obsidian);
+  border-top: 1px solid rgba(200,165,90,0.15);
+  padding: 80px 60px 40px;
+}
+.footer-top {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 60px; margin-bottom: 70px;
+}
+.footer-brand {}
+.footer-logo-main {
+  font-family: var(--font-accent);
+  font-size: 1.1rem; letter-spacing: 0.25em; color: var(--white);
+  margin-bottom: 4px;
+}
+.footer-logo-sub {
+  font-family: var(--font-body);
+  font-size: 0.58rem; letter-spacing: 0.35em;
+  color: var(--gold); text-transform: uppercase;
+}
+.footer-tagline {
+  font-size: 0.82rem; font-weight: 300;
+  line-height: 1.85; color: var(--silver);
+  margin-top: 22px; margin-bottom: 32px;
+  max-width: 280px;
+}
+.footer-socials { display: flex; gap: 14px; }
+.footer-social {
+  width: 40px; height: 40px;
+  border: 1px solid rgba(255,255,255,0.1);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.75rem; color: var(--silver);
+  transition: border-color var(--fast), color var(--fast);
+  text-decoration: none;
+}
+.footer-social:hover { border-color: var(--gold); color: var(--gold); }
+.footer-col-title {
+  font-family: var(--font-accent);
+  font-size: 0.58rem; letter-spacing: 0.35em;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 24px;
+}
+.footer-links { display: flex; flex-direction: column; gap: 14px; }
+.footer-links a {
+  font-size: 0.8rem; font-weight: 300; color: var(--silver);
+  transition: color var(--fast); letter-spacing: 0.05em;
+}
+.footer-links a:hover { color: var(--ivory); }
+.footer-bottom {
+  padding-top: 40px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.footer-copy {
+  font-size: 0.7rem; font-weight: 300;
+  color: var(--mid); letter-spacing: 0.05em;
+}
+.footer-credits {
+  display: flex; gap: 30px;
+}
+.footer-credits a {
+  font-size: 0.68rem; color: var(--mid);
+  transition: color var(--fast); letter-spacing: 0.05em;
+}
+.footer-credits a:hover { color: var(--silver); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1200px) {
+  .about-grid { gap: 60px; }
+  .founder-grid { grid-template-columns: 360px 1fr; gap: 60px; }
+}
+
+@media (max-width: 1024px) {
+  nav { padding: 24px 36px; }
+  nav.scrolled { padding: 16px 36px; }
+  .nav-links { gap: 28px; }
+  #hero .hero-content { padding: 0 36px; }
+  #about, #services, #projects, #founder, #pricing, #careers { padding: 100px 36px; }
+  .about-grid { grid-template-columns: 1fr; }
+  .about-img-wrap { height: 480px; }
+  .about-img-accent { right: -20px; bottom: -20px; }
+  .founder-grid { grid-template-columns: 1fr; gap: 50px; }
+  .founder-img-frame { height: 460px; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .pricing-card { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.08); }
+  .pricing-card:last-child { border-bottom: none; }
+  .careers-grid { grid-template-columns: 1fr; gap: 50px; }
+  #contact { grid-template-columns: 1fr; }
+  .contact-form-wrap { padding: 70px 36px; }
+  .contact-info { padding: 70px 36px; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+}
+
+@media (max-width: 768px) {
+  body { cursor: auto; }
+  .cursor-dot, .cursor-ring { display: none; }
+  nav { padding: 20px 24px; }
+  nav.scrolled { padding: 14px 24px; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .hero-content { padding: 0 24px; }
+  .hero-btns { flex-direction: column; align-items: flex-start; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .stat-item:nth-child(2) { border-right: none; }
+  .stat-item { padding: 36px 24px; }
+  #about, #services, #projects, #founder, #pricing, #careers { padding: 80px 24px; }
+  .services-grid { grid-template-columns: 1fr; }
+  .service-card { height: 420px; }
+  .projects-header { flex-direction: column; align-items: flex-start; gap: 24px; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .project-item:nth-child(1) { grid-row: span 1; }
+  .project-img { height: 280px !important; min-height: unset !important; }
+  .pricing-grid { border: none; }
+  .pricing-card { border: 1px solid rgba(0,0,0,0.08); margin-bottom: 2px; }
+  .form-grid { grid-template-columns: 1fr; }
+  footer { padding: 60px 24px 30px; }
+  .footer-top { grid-template-columns: 1fr; gap: 36px; }
+  .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+  .about-img-accent { display: none; }
+  .about-img-wrap { height: 360px; }
+  .contact-info, .contact-form-wrap { padding: 60px 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ─── CURSOR ─── -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- ─── LOADER ─── -->
+<div id="loader">
+  <div class="loader-logo">STYLISH CABINETRY MILLWORKS</div>
+  <div class="loader-bar-wrap">
+    <div class="loader-bar"></div>
+  </div>
+</div>
+
+<!-- ─── MOBILE MENU ─── -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#services" onclick="closeMobile()">Services</a>
+  <a href="#projects" onclick="closeMobile()">Projects</a>
+  <a href="#founder" onclick="closeMobile()">Our Story</a>
+  <a href="#pricing" onclick="closeMobile()">Pricing</a>
+  <a href="#careers" onclick="closeMobile()">Careers</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+  <div class="m-contact">+1 604 379 9060</div>
+</div>
+
+<!-- ─── NAVIGATION ─── -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">
+    <div class="nav-logo-main">SCM</div>
+    <div class="nav-logo-sub">Stylish Cabinetry Millworks</div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#founder">Our Story</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#careers">Careers</a></li>
+    <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Vancouver & Okanagan · Est. 2014</div>
+    <h1 class="hero-title">
+      <span class="line hero-t1"><span>Crafting Spaces of</span></span>
+      <span class="line hero-t2"><span>Exceptional</span></span>
+      <span class="line hero-t3"><span>Distinction</span></span>
+    </h1>
+    <p class="hero-desc">Bespoke cabinetry and millwork elevated to an art form. From custom kitchens to luxury vanities, every project is a masterpiece of craftsmanship and precision.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Request Consultation</a>
+      <a href="#projects" class="btn-outline">View Our Work</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ─── STATS ─── -->
+<section id="stats">
+  <div class="stats-grid">
+    <div class="stat-item reveal">
+      <div class="stat-number"><span class="counter" data-target="20">0</span><sup>yr</sup></div>
+      <div class="stat-label">Warranty on Kitchens</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-1">
+      <div class="stat-number"><span class="counter" data-target="10">0</span><sup>+</sup></div>
+      <div class="stat-label">Years of Experience</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-2">
+      <div class="stat-number"><span class="counter" data-target="500">0</span><sup>+</sup></div>
+      <div class="stat-label">Projects Completed</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-3">
+      <div class="stat-number"><span class="counter" data-target="100">0</span><sup>%</sup></div>
+      <div class="stat-label">Client Satisfaction</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ABOUT ─── -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-img-wrap reveal-left">
+      <div class="about-img-main">
+        <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?w=800&q=85" alt="Luxury kitchen design by Stylish Cabinetry Millworks" loading="lazy">
+      </div>
+      <div class="about-img-accent">
+        <img src="https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=500&q=85" alt="Custom cabinetry detail" loading="lazy">
+      </div>
+      <div class="about-badge">
+        <div class="about-badge-num">4+</div>
+        <div class="about-badge-txt">Years in<br>Lower Mainland</div>
+      </div>
+    </div>
+    <div class="about-content">
+      <div class="section-label reveal">About Stylish Cabinetry Millworks</div>
+      <h2 class="section-title about-title reveal reveal-delay-1">
+        Locally Rooted.<br><em>Globally Inspired.</em>
+      </h2>
+      <p class="about-text reveal reveal-delay-2">As a leading player in the cabinetry business, Stylish Cabinetry Millworks accepts all sizes of cabinetry projects across Greater Vancouver and the Okanagan. We are a locally and family-owned studio dedicated to transforming spaces into works of art.</p>
+      <p class="about-text reveal reveal-delay-2">The best materials, the newest hardware, and the most updated technical and engineering knowledge are just our basic tools. Our brilliant customer service and the functionality of our design consistently lead us to outstanding outcomes and luxurious homes.</p>
+      <div class="about-divider reveal reveal-delay-3"></div>
+      <div class="about-features reveal reveal-delay-3">
+        <div class="about-feat"><div class="about-feat-icon"></div>Family-Owned & Operated</div>
+        <div class="about-feat"><div class="about-feat-icon"></div>20-Year Kitchen Warranty</div>
+        <div class="about-feat"><div class="about-feat-icon"></div>State-of-the-Art 3D Design</div>
+        <div class="about-feat"><div class="about-feat-icon"></div>Premium European Hardware</div>
+        <div class="about-feat"><div class="about-feat-icon"></div>Serving Vancouver & Okanagan</div>
+        <div class="about-feat"><div class="about-feat-icon"></div>Full Project Management</div>
+      </div>
+      <a href="#contact" class="btn-dark reveal reveal-delay-4">Schedule a Consultation</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SERVICES ─── -->
+<section id="services">
+  <div class="services-header">
+    <div class="section-label reveal">What We Create</div>
+    <h2 class="services-title section-title reveal reveal-delay-1">Our <em>Craft &</em> Services</h2>
+    <p class="services-sub reveal reveal-delay-2">Every project begins with a vision. We transform that vision into a living, breathing space crafted to perfection with uncompromising attention to detail.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-img">
+        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&q=85" alt="Custom Kitchen Cabinetry" loading="lazy">
+      </div>
+      <div class="service-overlay"></div>
+      <div class="service-content">
+        <div class="service-num">01 — Kitchen</div>
+        <h3 class="service-name">Custom Kitchen Cabinetry</h3>
+        <p class="service-desc">New cabinetry projects from sketches, kitchen upgrades, or refacing of existing kitchens — all handled with exceptional care. After identifying your vision, we set up consulting sessions and present detailed 3D designs with multiple options.</p>
+        <a href="#contact" class="service-link">Request Consultation</a>
+      </div>
+    </div>
+    <div class="service-card reveal reveal-delay-1">
+      <div class="service-img">
+        <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=900&q=85" alt="Bathroom Vanities & Closets" loading="lazy">
+      </div>
+      <div class="service-overlay"></div>
+      <div class="service-content">
+        <div class="service-num">02 — Bath & Closet</div>
+        <h3 class="service-name">Bathroom Vanities & Closets</h3>
+        <p class="service-desc">Trending architecture defines bathrooms as more than hygiene — they are a space for organizing personal belongings elegantly. We transform unused space into magnificent closets, vanities, and organizers of any kind.</p>
+        <a href="#contact" class="service-link">Explore Design Options</a>
+      </div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-img">
+        <img src="https://images.unsplash.com/photo-1615529182904-14819c35db37?w=900&q=85" alt="Decorating Walls & Custom Millwork" loading="lazy">
+      </div>
+      <div class="service-overlay"></div>
+      <div class="service-content">
+        <div class="service-num">03 — Millwork</div>
+        <h3 class="service-name">Decorating Walls & Interiors</h3>
+        <p class="service-desc">Flexible concepts from our engineering team give us a free hand to manage all types of interior decoration. TV walls, wall beds, home libraries, and custom filling systems are clear examples of our capabilities.</p>
+        <a href="#contact" class="service-link">Start Your Project</a>
+      </div>
+    </div>
+    <div class="service-card reveal reveal-delay-1">
+      <div class="service-img">
+        <img src="https://images.unsplash.com/photo-1618221118493-9cfa1a1c00da?w=900&q=85" alt="3D Design Studio" loading="lazy">
+      </div>
+      <div class="service-overlay"></div>
+      <div class="service-content">
+        <div class="service-num">04 — Visualization</div>
+        <h3 class="service-name">3D Design Studio</h3>
+        <p class="service-desc">Complete 3D illustration in photorealistic images or animation plays a crucial role in understanding your project's potential. We invest considerably in keeping our software upgraded to ensure 100% customer satisfaction before a single nail is driven.</p>
+        <a href="#contact" class="service-link">View 3D Portfolio</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PROJECTS ─── -->
+<section id="projects">
+  <div class="projects-header reveal">
+    <div class="projects-title-wrap">
+      <div class="section-label">Our Portfolio</div>
+      <h2 class="projects-title">Selected <em>Projects</em></h2>
+    </div>
+    <div class="projects-filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="kitchen">Kitchen</button>
+      <button class="filter-btn" data-filter="bathroom">Bathroom</button>
+      <button class="filter-btn" data-filter="millwork">Millwork</button>
+    </div>
+  </div>
+  <div class="projects-grid">
+    <div class="project-item reveal" data-category="kitchen">
+      <div class="project-img">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=85" alt="Vancouver Modern Kitchen" loading="lazy">
+      </div>
+      <div class="project-overlay">
+        <div class="project-info">
+          <div class="project-cat">Kitchen</div>
+          <div class="project-name">The Burnaby Residence</div>
+          <div class="project-loc">Burnaby, BC — 2024</div>
+        </div>
+      </div>
+    </div>
+    <div class="project-item reveal reveal-delay-1" data-category="kitchen">
+      <div class="project-img">
+        <img src="https://images.unsplash.com/photo-1565538420870-da08ff96a207?w=800&q=85" alt="Modern Kitchen Design" loading="lazy">
+      </div>
+      <div class="project-overlay">
+        <div class="project-info">
+          <div class="project-cat">Kitchen</div>
+          <div class="project-name">Okanagan Lake View</div>
+          <div class="project-loc">Kelowna, BC — 2024</div>
+        </div>
+      </div>
+    </div>
+    <div class="project-item reveal reveal-delay-2" data-category="bathroom">
+      <div class="project-img">
+        <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&q=85" alt="Luxury Bathroom Vanity" loading="lazy">
+      </div>
+      <div class="project-overlay">
+        <div class="project-info">
+          <div class="project-cat">Bathroom</div>
+          <div class="project-name">West Vancouver Estate</div>
+          <div class="project-loc">West Vancouver, BC — 2023</div>
+        </div>
+      </div>
+    </div>
+    <div class="project-item reveal reveal-delay-1" data-category="kitchen">
+      <div class="project-img">
+        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=85" alt="Luxury Kitchen Island" loading="lazy">
+      </div>
+      <div class="project-overlay">
+        <div class="project-info">
+          <div class="project-cat">Kitchen</div>
+          <div class="project-name">Richmond Modern</div>
+          <div class="project-loc">Richmond, BC — 2023</div>
+        </div>
+      </div>
+    </div>
+    <div class="project-item reveal reveal-delay-2" data-category="millwork">
+      <div class="project-img">
+        <img src="https://images.unsplash.com/photo-1615529182904-14819c35db37?w=800&q=85" alt="Custom Wall Millwork" loading="lazy">
+      </div>
+      <div class="project-overlay">
+        <div class="project-info">
+          <div class="project-cat">Millwork</div>
+          <div class="project-name">Coquitlam Feature Wall</div>
+          <div class="project-loc">Coquitlam, BC — 2023</div>
+        </div>
+      </div>
+    </div>
+    <div class="project-item reveal reveal-delay-3" data-category="kitchen">
+      <div class="project-img">
+        <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800&q=85" alt="White Kitchen Cabinetry" loading="lazy">
+      </div>
+      <div class="project-overlay">
+        <div class="project-info">
+          <div class="project-cat">Kitchen</div>
+          <div class="project-name">Surrey Contemporary</div>
+          <div class="project-loc">Surrey, BC — 2022</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="projects-cta reveal">
+    <a href="#contact" class="btn-outline" style="display:inline-flex;align-items:center;gap:12px;padding:18px 48px;border:1px solid rgba(200,165,90,0.3);color:var(--gold);font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;transition:all var(--fast)">
+      View All Projects &nbsp;→
+    </a>
+  </div>
+</section>
+
+<!-- ─── FOUNDER ─── -->
+<section id="founder">
+  <div class="founder-grid">
+    <div class="founder-img-wrap reveal-left">
+      <div class="founder-img-frame">
+        <img src="" alt="Founder of Stylish Cabinetry Millworks" loading="lazy">
+      </div>
+      <div class="founder-tag">
+        <div class="founder-tag-role">Founder & Master Craftsman</div>
+        <div class="founder-tag-name">Behzad</div>
+      </div>
+    </div>
+    <div class="founder-content">
+      <div class="section-label reveal">Our Founder</div>
+      <blockquote class="founder-quote reveal reveal-delay-1">
+        "Every space we create carries our signature — not just in craftsmanship, but in the life and joy it brings to those who inhabit it."
+      </blockquote>
+      <p class="founder-bio reveal reveal-delay-2">With over a decade of hands-on experience in premium cabinetry and millwork across Europe and Canada, Behzad founded Stylish Cabinetry Millworks with a singular vision: to bring world-class craftsmanship to the homes of Greater Vancouver and the Okanagan.</p>
+      <p class="founder-bio reveal reveal-delay-2">What began as a passion for transforming spaces has grown into a team of dedicated artisans and designers who share that same commitment to excellence. We are proud to remain a family-owned business where every client receives the personal attention they deserve.</p>
+      <div class="founder-divider reveal reveal-delay-3"></div>
+      <div class="reveal reveal-delay-3">
+        <div class="founder-signature">Behzad</div>
+        <div class="founder-sig-title">Founder & Principal Designer, Stylish Cabinetry Millworks</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PRICING ─── -->
+<section id="pricing">
+  <div class="pricing-header">
+    <div class="section-label reveal">Investment Guide</div>
+    <h2 class="pricing-title section-title reveal reveal-delay-1">Transparent <em>Pricing</em></h2>
+    <p class="pricing-sub reveal reveal-delay-2">Every project is unique. Our packages offer a starting framework — your final investment depends on size, materials, and complexity. All quotes are provided after a free consultation.</p>
+  </div>
+  <div class="pricing-grid">
+    <div class="pricing-card reveal">
+      <div class="pricing-tier">Essential</div>
+      <div class="pricing-price">$8,000<sup style="font-size:0.35em;vertical-align:super">+</sup></div>
+      <div class="pricing-price-from">Starting investment</div>
+      <div class="pricing-line"></div>
+      <div class="pricing-desc">Ideal for focused upgrades — a single kitchen refacing or bathroom vanity refresh that transforms your space without full renovation.</div>
+      <div class="pricing-feats">
+        <div class="pricing-feat"><div class="pricing-feat-icon"></div>Kitchen refacing or single room</div>
+        <div class="pricing-feat"><div class="pricing-feat-icon"></div>Standard material selection</div>
+        <div class="pricing-feat"><div class="pricing-feat-icon"></div>2D design plans included</div>
+        <div class="pricing-feat"><div class="pricing-feat-icon"></div>10-year craftsmanship warranty</div>
+        <div class="pricing-feat"><div class="pricing-feat-icon"></div>Project management included</div>
+      </div>
+      <a href="#contact" class="btn-pricing-dark">Request Estimate</a>
+    </div>
+    <div class="pricing-card featured reveal reveal-delay-1">
+      <div class="pricing-badge">Most Popular</div>
+      <div class="pricing-tier">Premium</div>
+      <div class="pricing-price">$22,000<sup style="font-size:0.35em;vertical-align:super">+</sup></div>
+      <div class="pricing-price-from">Starting investment</div>
+      <div class="pricing-line"></div>
+      <div class="pricing-desc">Our most sought-after package for a complete custom kitchen or full bathroom transformation with premium materials and hardware.</div>
+      <div class="pricing-feats">
+        <div class="pricing-feat"><div class="pricing-feat-icon"></div>Full custom kitchen or multi-room</div>
+        <div class="pricing-feat"><div class="pricing-feat-icon"></div>Premium European hardware</div>
+        <div class="pricing-feat"><div class="pricing-feat-icon"></div>3D photorealistic renders</div>
+        <div class="pricing-feat"><div class="pricing-feat-icon"></div>20-year kitchen warranty</div>
+        <div class="pricing-feat"><div class="pricing-feat-icon"></div>Dedicated project manager</div>
+        <div class="pricing-feat"><div class="pricing-feat-icon"></div>Multiple design revisions</div>
+      </div>
+      <a href="#contact" class="btn-pricing-gold">Request Estimate</a>
+    </div>
+    <div class="pricing-card reveal reveal-delay-2">
+      <div class="pricing-tier">Luxury</div>
+      <div class="pricing-price">$50,000<sup style="font-size:0.35em;vertical-align:super">+</sup></div>
+      <div class="pricing-price-from">Starting investment</div>
+      <div class="pricing-line"></div>
+      <div class="pricing-desc">The complete Stylish experience — full home millwork including kitchen, bathrooms, custom wall systems, and every interior detail handled with white-glove service.</div>
+      <div class="pricing-feats">
+        <div class="pricing-feat"><div class="pricing-feat-icon"></div>Whole-home millwork scope</div>
+        <div class="pricing-feat"><div class="pricing-feat-icon"></div>Ultra-premium materials</div>
+        <div class="pricing-feat"><div class="pricing-feat-icon"></div>3D animation walkthroughs</div>
+        <div class="pricing-feat"><div class="pricing-feat-icon"></div>20-year full warranty</div>
+        <div class="pricing-feat"><div class="pricing-feat-icon"></div>White-glove project delivery</div>
+        <div class="pricing-feat"><div class="pricing-feat-icon"></div>Priority scheduling & aftercare</div>
+      </div>
+      <a href="#contact" class="btn-pricing-dark">Request Estimate</a>
+    </div>
+  </div>
+  <p class="pricing-note reveal">All pricing is project-specific. Contact us for a complimentary consultation and detailed quote. We serve Greater Vancouver and the Okanagan.</p>
+</section>
+
+<!-- ─── CAREERS ─── -->
+<section id="careers">
+  <div class="careers-grid">
+    <div class="careers-intro">
+      <div class="section-label reveal">Join Our Team</div>
+      <h2 class="careers-title reveal reveal-delay-1">Build Something <em>Extraordinary</em></h2>
+      <p class="careers-text reveal reveal-delay-2">At Stylish Cabinetry Millworks, we believe great work comes from passionate people in a supportive environment. We are always looking for skilled artisans, designers, and professionals who share our commitment to craft and client excellence.</p>
+      <div class="careers-values reveal reveal-delay-3">
+        <div class="careers-value">
+          <div class="cv-num">01</div>
+          <div>
+            <div class="cv-title">Master Craftsmanship</div>
+            <div class="cv-desc">We take pride in every joint, every surface, every detail. Our work is our signature.</div>
+          </div>
+        </div>
+        <div class="careers-value">
+          <div class="cv-num">02</div>
+          <div>
+            <div class="cv-title">Continuous Growth</div>
+            <div class="cv-desc">We invest in training, tools, and the personal development of every team member.</div>
+          </div>
+        </div>
+        <div class="careers-value">
+          <div class="cv-num">03</div>
+          <div>
+            <div class="cv-title">Family Culture</div>
+            <div class="cv-desc">As a family-owned business, we treat our team as an extension of that family.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="careers-jobs">
+      <div class="job-card reveal">
+        <div class="job-head">
+          <div class="job-title">Cabinet Maker & Installer</div>
+          <div class="job-type">Full-Time</div>
+        </div>
+        <div class="job-meta">
+          <span>Vancouver, BC</span>
+          <span>On-Site</span>
+        </div>
+        <p class="job-desc">Experienced cabinet maker with knowledge of European-style cabinetry systems. Responsible for precise fabrication, assembly, and on-site installation of custom cabinetry across residential projects.</p>
+        <a href="#contact" class="job-apply">Apply Now</a>
+      </div>
+      <div class="job-card reveal reveal-delay-1">
+        <div class="job-head">
+          <div class="job-title">3D Interior Designer</div>
+          <div class="job-type">Full-Time</div>
+        </div>
+        <div class="job-meta">
+          <span>Vancouver / Kelowna</span>
+          <span>Hybrid</span>
+        </div>
+        <p class="job-desc">Skilled in 3D visualization software (SketchUp, 3ds Max, or similar). Create photorealistic renders and walkthroughs that bring client visions to life before production begins.</p>
+        <a href="#contact" class="job-apply">Apply Now</a>
+      </div>
+      <div class="job-card reveal reveal-delay-2">
+        <div class="job-head">
+          <div class="job-title">Project Manager</div>
+          <div class="job-type">Full-Time</div>
+        </div>
+        <div class="job-meta">
+          <span>Vancouver, BC</span>
+          <span>On-Site / Client-Facing</span>
+        </div>
+        <p class="job-desc">Oversee the full lifecycle of cabinetry and millwork projects from consultation to delivery. Coordinate between clients, designers, and installation teams to ensure flawless execution.</p>
+        <a href="#contact" class="job-apply">Apply Now</a>
+      </div>
+      <div class="job-card reveal reveal-delay-3">
+        <div class="job-head">
+          <div class="job-title">Sales & Design Consultant</div>
+          <div class="job-type">Part-Time / Full-Time</div>
+        </div>
+        <div class="job-meta">
+          <span>Greater Vancouver</span>
+          <span>Client-Facing</span>
+        </div>
+        <p class="job-desc">Guide clients through the design and selection process from initial consultation to final specifications. A passion for interiors and exceptional communication skills are essential.</p>
+        <a href="#contact" class="job-apply">Apply Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTACT ─── -->
+<section id="contact">
+  <div class="contact-info">
+    <div class="section-label reveal">Get in Touch</div>
+    <h2 class="contact-title reveal reveal-delay-1">Let's Create Something <em style="font-style:italic;color:var(--gold)">Beautiful</em></h2>
+    <p class="contact-subtitle reveal reveal-delay-2">Book a complimentary consultation and let us show you what's possible. We serve Greater Vancouver and the Okanagan — in-home visits available.</p>
+    <div class="contact-details">
+      <div class="contact-detail reveal reveal-delay-2">
+        <div class="cd-icon">☎</div>
+        <div>
+          <div class="cd-label">Call Us</div>
+          <div class="cd-value"><a href="tel:+16043799060">+1 604 379 9060</a></div>
+        </div>
+      </div>
+      <div class="contact-detail reveal reveal-delay-3">
+        <div class="cd-icon">✉</div>
+        <div>
+          <div class="cd-label">Email</div>
+          <div class="cd-value"><a href="mailto:info@stylishcm.com">info@stylishcm.com</a></div>
+        </div>
+      </div>
+      <div class="contact-detail reveal reveal-delay-4">
+        <div class="cd-icon">◉</div>
+        <div>
+          <div class="cd-label">Service Area</div>
+          <div class="cd-value">Greater Vancouver &<br>Okanagan District, BC</div>
+        </div>
+      </div>
+      <div class="contact-detail reveal reveal-delay-4">
+        <div class="cd-icon">◈</div>
+        <div>
+          <div class="cd-label">Instagram</div>
+          <div class="cd-value"><a href="https://www.instagram.com/stylemillwork/" target="_blank">@stylishmillwork</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="contact-form-wrap">
+    <div class="contact-form-title reveal">Request a Free Consultation</div>
+    <form id="contactForm" novalidate>
+      <div class="form-grid">
+        <div class="form-group reveal">
+          <label class="form-label">First Name</label>
+          <input type="text" class="form-control" placeholder="John" name="fname" required>
+        </div>
+        <div class="form-group reveal reveal-delay-1">
+          <label class="form-label">Last Name</label>
+          <input type="text" class="form-control" placeholder="Smith" name="lname" required>
+        </div>
+        <div class="form-group reveal reveal-delay-1">
+          <label class="form-label">Email Address</label>
+          <input type="email" class="form-control" placeholder="john@example.com" name="email" required>
+        </div>
+        <div class="form-group reveal reveal-delay-2">
+          <label class="form-label">Phone Number</label>
+          <input type="tel" class="form-control" placeholder="+1 604 000 0000" name="phone">
+        </div>
+        <div class="form-group form-full reveal reveal-delay-2">
+          <label class="form-label">Service of Interest</label>
+          <select class="form-control" name="service">
+            <option value="" disabled selected>Select a service</option>
+            <option>Custom Kitchen Cabinetry</option>
+            <option>Bathroom Vanities & Closets</option>
+            <option>Wall Decoration & Millwork</option>
+            <option>3D Design Studio</option>
+            <option>Full Home Millwork</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group form-full reveal reveal-delay-3">
+          <label class="form-label">Tell Us About Your Project</label>
+          <textarea class="form-control" placeholder="Describe your project, timeline, and any specific requirements..." name="message" required></textarea>
+        </div>
+        <div class="form-submit form-full reveal reveal-delay-3">
+          <button type="submit" class="btn-submit"><span>Send Consultation Request</span></button>
+          <div class="form-success" id="formSuccess">
+            ✓ &nbsp; Thank you! We'll be in touch within 24 hours to schedule your complimentary consultation.
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo-main">SCM</div>
+      <div class="footer-logo-sub">Stylish Cabinetry Millworks</div>
+      <p class="footer-tagline">Crafting spaces of exceptional distinction across Greater Vancouver and the Okanagan since 2014. Family-owned, locally rooted, globally inspired.</p>
+      <div class="footer-socials">
+        <a href="https://www.instagram.com/stylemillwork/" target="_blank" class="footer-social" aria-label="Instagram">ig</a>
+        <a href="tel:+16043799060" class="footer-social" aria-label="Call us">☎</a>
+        <a href="mailto:info@stylishcm.com" class="footer-social" aria-label="Email">✉</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Services</div>
+      <ul class="footer-links">
+        <li><a href="#services">Custom Kitchen Cabinetry</a></li>
+        <li><a href="#services">Bathroom Vanities</a></li>
+        <li><a href="#services">Custom Closets</a></li>
+        <li><a href="#services">Wall Decoration</a></li>
+        <li><a href="#services">3D Design Studio</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <ul class="footer-links">
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#founder">Our Story</a></li>
+        <li><a href="#careers">Careers</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <ul class="footer-links">
+        <li><a href="tel:+16043799060">+1 604 379 9060</a></li>
+        <li><a href="mailto:info@stylishcm.com">info@stylishcm.com</a></li>
+        <li><a href="#contact">Request Consultation</a></li>
+        <li><a href="https://www.instagram.com/stylemillwork/" target="_blank">@stylishmillwork</a></li>
+      </ul>
+      <div style="margin-top:28px;font-size:0.72rem;font-weight:300;color:var(--mid);line-height:1.8">
+        Greater Vancouver<br>Okanagan District, BC<br>Canada
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Aishveena's D'amore Group / Aishmehar Singh All rights reserved.</div>
+    <div class="footer-credits">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Sitemap</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ─── SCRIPTS ─── -->
+<script>
+/* LOADER */
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('loader').classList.add('hidden');
+  }, 2200);
+});
+
+/* CUSTOM CURSOR */
+const dot = document.getElementById('cursorDot');
+const ring = document.getElementById('cursorRing');
+let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+document.addEventListener('mousemove', e => {
+  mouseX = e.clientX; mouseY = e.clientY;
+  dot.style.left = mouseX + 'px';
+  dot.style.top  = mouseY + 'px';
+});
+function animateRing() {
+  ringX += (mouseX - ringX) * 0.12;
+  ringY += (mouseY - ringY) * 0.12;
+  ring.style.left = ringX + 'px';
+  ring.style.top  = ringY + 'px';
+  requestAnimationFrame(animateRing);
+}
+animateRing();
+
+/* NAVBAR SCROLL */
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+/* HAMBURGER / MOBILE MENU */
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+  document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+});
+function closeMobile() {
+  hamburger.classList.remove('open');
+  mobileMenu.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+/* SCROLL REVEAL */
+const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+revealEls.forEach(el => revealObserver.observe(el));
+
+/* COUNTER ANIMATION */
+function animateCounter(el) {
+  const target = parseInt(el.getAttribute('data-target'));
+  const duration = 2000;
+  const start = performance.now();
+  function update(now) {
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    const ease = 1 - Math.pow(1 - progress, 3);
+    el.textContent = Math.round(ease * target);
+    if (progress < 1) requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+}
+const counters = document.querySelectorAll('.counter');
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      animateCounter(entry.target);
+      counterObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.5 });
+counters.forEach(c => counterObserver.observe(c));
+
+/* PROJECT FILTERS */
+const filterBtns = document.querySelectorAll('.filter-btn');
+const projectItems = document.querySelectorAll('.project-item');
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.getAttribute('data-filter');
+    projectItems.forEach(item => {
+      const cat = item.getAttribute('data-category');
+      if (filter === 'all' || cat === filter) {
+        item.style.opacity = '1';
+        item.style.transform = 'scale(1)';
+        item.style.display = '';
+      } else {
+        item.style.opacity = '0.2';
+        item.style.transform = 'scale(0.97)';
+      }
+    });
+  });
+});
+
+/* CONTACT FORM */
+const contactForm = document.getElementById('contactForm');
+contactForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const inputs = contactForm.querySelectorAll('[required]');
+  let valid = true;
+  inputs.forEach(input => {
+    if (!input.value.trim()) {
+      valid = false;
+      input.style.borderColor = '#e05252';
+      setTimeout(() => { input.style.borderColor = ''; }, 2000);
+    }
+  });
+  if (!valid) return;
+  const btn = contactForm.querySelector('.btn-submit');
+  btn.querySelector('span').textContent = 'Sending…';
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.querySelector('span').textContent = '✓ Sent';
+    document.getElementById('formSuccess').style.display = 'block';
+    contactForm.reset();
+    setTimeout(() => {
+      btn.querySelector('span').textContent = 'Send Consultation Request';
+      btn.disabled = false;
+    }, 4000);
+  }, 1600);
+});
+
+/* SMOOTH SCROLL FOR NAV LINKS */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      const offset = 80;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  });
+});
+
+/* PARALLAX ON HERO */
+const heroBg = document.querySelector('.hero-bg');
+window.addEventListener('scroll', () => {
+  const scrolled = window.scrollY;
+  if (scrolled < window.innerHeight) {
+    heroBg.style.transform = `scale(1) translateY(${scrolled * 0.3}px)`;
+  }
+}, { passive: true });
+</script>
+</body>
+</html>
